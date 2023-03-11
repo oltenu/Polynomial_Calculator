@@ -1,5 +1,3 @@
-package main;
-
 import logic.Operations;
 import model.Polynomial;
 import view.View;
