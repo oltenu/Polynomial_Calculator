@@ -30,8 +30,9 @@ public class Polynomial {
                 if(monomialsMap.get(exponent) != 0){
                     if(exponent > 1) {
                         returnValue.append((monomialsMap.get(exponent).equals(-1)) ? ("-x^" + exponent) : (monomialsMap.get(exponent) + "x^" + exponent));
-                    } else if(exponent == 1)
+                    } else if(exponent == 1){
                         returnValue.append((monomialsMap.get(exponent).equals(-1)) ? ("-x") : (monomialsMap.get(exponent) + "x"));
+                    }
                     else
                         returnValue.append(monomialsMap.get(exponent));
                 }

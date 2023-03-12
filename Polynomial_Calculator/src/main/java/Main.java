@@ -1,3 +1,5 @@
+import logic.Operations;
+import model.Polynomial;
 import view.View;
 
 public class Main {
