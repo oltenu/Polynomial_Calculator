@@ -3,23 +3,23 @@ package model;
 import java.util.TreeMap;
 
 public class Polynomial {
-    private TreeMap<Integer, Integer> monomialsMap;
+    private TreeMap<Integer, Double> monomialsMap;
 
-    public Polynomial(){
+    public Polynomial(String userInput){
         monomialsMap = new TreeMap<>();
     }
 
-    public void insertMonomial(int exponent, int coefficient){
+    public Polynomial(){
+        this("");
+    }
+
+    public void insertMonomial(int exponent, double coefficient){
 
         monomialsMap.put(exponent, coefficient);
     }
 
-    public TreeMap<Integer, Integer> getMonomialsMap(){
+    public TreeMap<Integer, Double> getMonomialsMap(){
         return monomialsMap;
-    }
-
-    public void clear(){
-        monomialsMap.clear();
     }
 
     @Override
@@ -29,21 +29,21 @@ public class Polynomial {
             if(returnValue.isEmpty() || monomialsMap.get(exponent) < 0){
                 if(monomialsMap.get(exponent) != 0){
                     if(exponent > 1) {
-                        returnValue.append((monomialsMap.get(exponent).equals(-1)) ? ("-x^" + exponent) : (monomialsMap.get(exponent) + "x^" + exponent));
+                        returnValue.append((monomialsMap.get(exponent) == -1) ? ("-x^" + exponent) : (String.format("%g", monomialsMap.get(exponent)) + "x^" + exponent));
                     } else if(exponent == 1){
-                        returnValue.append((monomialsMap.get(exponent).equals(-1)) ? ("-x") : (monomialsMap.get(exponent) + "x"));
+                        returnValue.append((monomialsMap.get(exponent) == -1) ? ("-x") : (String.format("%g", monomialsMap.get(exponent))+ "x"));
                     }
                     else
-                        returnValue.append(monomialsMap.get(exponent));
+                        returnValue.append(String.format("%g", monomialsMap.get(exponent)));
                 }
             } else{
                 if(monomialsMap.get(exponent) != 0){
                     if(exponent > 1)
-                        returnValue.append((monomialsMap.get(exponent).equals(1)) ? ("+x^" + exponent) : ("+" + monomialsMap.get(exponent) + "x^" + exponent));
+                        returnValue.append((monomialsMap.get(exponent) == 1) ? ("+x^" + exponent) : ("+" + String.format("%g", monomialsMap.get(exponent))+ "x^" + exponent));
                     else if(exponent == 1)
-                        returnValue.append((monomialsMap.get(exponent).equals(1)) ? ("+x") : ("+" + monomialsMap.get(exponent) + "x"));
+                        returnValue.append((monomialsMap.get(exponent) == 1) ? ("+x") : ("+" + String.format("%g", monomialsMap.get(exponent)) + "x"));
                     else
-                        returnValue.append("+").append(monomialsMap.get(exponent));
+                        returnValue.append("+").append(String.format("%g", monomialsMap.get(exponent)));
                 }
             }
         }

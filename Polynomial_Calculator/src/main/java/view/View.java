@@ -9,7 +9,7 @@ public class View extends JFrame {
     private JPanel headerPanel;
     private JPanel inputPanel;
     private JPanel operationsPanel;
-    private JPanel resultPanel;
+    public JPanel resultPanel;
 
     private JTextField firstPolynomialTextField;
     private JTextField secondPolynomialTextField;
@@ -21,13 +21,13 @@ public class View extends JFrame {
     private JButton subtractionButton;
     private JButton multiplicationButton;
     private JButton divisionButton;
-    private JButton derivationButton;
+    private JButton derivativeButton;
     private JButton integralButton;
 
 
     public View(){
-        //ImageIcon applicationIcon = new ImageIcon(Objects.requireNonNull(View.class.getResource("D:\\Darius\\Facultate\\Anul_II\\Semestrul_II\\Tehnici_de_Programare_Fundamentale\\Laborator\\Assingment_01\\PT2023_30224_Oltean_Darius_Assignment_1\\Polynomial_Calculator\\src\\main\\resources\\images\\calculator")));
-        //setIconImage(applicationIcon.getImage());
+        ImageIcon applicationIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/calculator.png")));
+        setIconImage(applicationIcon.getImage());
         setSize(350, 500);
         setTitle("Polynomial Calculator");
         setResizable(false);
@@ -104,9 +104,9 @@ public class View extends JFrame {
         divisionButton = new JButton("Division");
         divisionButton.setFont(new Font("Arial", Font.BOLD, 20));
         divisionButton.setFocusable(false);
-        derivationButton = new JButton("Derivation");
-        derivationButton.setFont(new Font("Arial", Font.BOLD, 20));
-        derivationButton.setFocusable(false);
+        derivativeButton = new JButton("Derivative");
+        derivativeButton.setFont(new Font("Arial", Font.BOLD, 20));
+        derivativeButton.setFocusable(false);
         integralButton = new JButton("Integral");
         integralButton.setFont(new Font("Arial", Font.BOLD, 20));
         integralButton.setFocusable(false);
@@ -115,7 +115,7 @@ public class View extends JFrame {
         operationsPanel.add(subtractionButton);
         operationsPanel.add(multiplicationButton);
         operationsPanel.add(divisionButton);
-        operationsPanel.add(derivationButton);
+        operationsPanel.add(derivativeButton);
         operationsPanel.add(integralButton);
 
     }
@@ -123,16 +123,18 @@ public class View extends JFrame {
     public void createResultPanel(){
         resultPanel = new JPanel();
         resultPanel.setBackground(Color.LIGHT_GRAY);
-        resultPanel.setLayout(new GridLayout(2, 1, 10, 10));
+        resultPanel.setLayout( new GridLayout(2, 1, 10, 10));
 
-        resultLabel = new JLabel("Awaiting operation...");
+
+        resultLabel = new JLabel("Awaiting operation...", SwingConstants.CENTER);
         resultLabel.setFont(new Font("Arial", Font.BOLD, 20));
 
         resultTextField = new JTextField();
         resultTextField.setColumns(20);
+        resultTextField.setFont(new Font("Arial", Font.BOLD, 15));
         resultTextField.setEditable(false);
 
-        resultPanel.add(resultLabel);
+        resultPanel.add(resultLabel, CENTER_ALIGNMENT);
         resultPanel.add(resultTextField);
     }
 
@@ -170,8 +172,8 @@ public class View extends JFrame {
         divisionButton.addActionListener(division);
     }
 
-    public void addDerivationButtonListener(ActionListener derivation){
-        derivationButton.addActionListener(derivation);
+    public void addDerivativeButtonListener(ActionListener derivation){
+        derivativeButton.addActionListener(derivation);
     }
 
     public void addIntegralButtonListener(ActionListener integral){
