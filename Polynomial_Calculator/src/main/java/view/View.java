@@ -24,7 +24,6 @@ public class View extends JFrame {
     private JButton derivativeButton;
     private JButton integralButton;
 
-
     public View(){
         ImageIcon applicationIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/calculator.png")));
         setIconImage(applicationIcon.getImage());
@@ -153,6 +152,10 @@ public class View extends JFrame {
 
     public void setResultLabel(String operation){
         resultLabel.setText("Result of " + operation);
+    }
+
+    public void invalidInputDialog(){
+        JOptionPane.showInputDialog(new JButton("OK!"), "Invalid Input!");
     }
 
     //Listeners

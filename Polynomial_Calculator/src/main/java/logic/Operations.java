@@ -4,7 +4,7 @@ import model.Polynomial;
 
 public class Operations {
 
-    public static Polynomial addition(Polynomial firstPolynomial, Polynomial secondPolynomial){
+    public Polynomial addition(Polynomial firstPolynomial, Polynomial secondPolynomial){
         Polynomial returnValue = new Polynomial();
 
         for(Integer exponent : firstPolynomial.getMonomialsMap().keySet()){
@@ -21,8 +21,7 @@ public class Operations {
         return returnValue;
     }
 
-
-    public static Polynomial subtraction(Polynomial firstPolynomial, Polynomial secondPolynomial){
+    public Polynomial subtraction(Polynomial firstPolynomial, Polynomial secondPolynomial){
         Polynomial returnValue = new Polynomial();
 
         for(Integer exponent : firstPolynomial.getMonomialsMap().keySet()){
@@ -39,7 +38,7 @@ public class Operations {
         return returnValue;
     }
 
-    public static Polynomial multiplication(Polynomial firstPolynomial, Polynomial secondPolynomial){
+    public Polynomial multiplication(Polynomial firstPolynomial, Polynomial secondPolynomial){
         Polynomial returnValue = new Polynomial();
 
         for(Integer firstExponent : firstPolynomial.getMonomialsMap().keySet())
@@ -55,9 +54,9 @@ public class Operations {
         return returnValue;
     }
 
-    public static String division(Polynomial firstPolynomial, Polynomial secondPolynomial){return null;}
+    public String division(Polynomial firstPolynomial, Polynomial secondPolynomial){return null;}
 
-    public static Polynomial derivative(Polynomial polynomial){
+    public Polynomial derivative(Polynomial polynomial){
         Polynomial returnValue = new Polynomial();
 
         for(Integer exponent : polynomial.getMonomialsMap().descendingKeySet()){
@@ -68,7 +67,7 @@ public class Operations {
         return returnValue;
     }
 
-    public static Polynomial integral(Polynomial polynomial){
+    public Polynomial integral(Polynomial polynomial){
         Polynomial returnValue = new Polynomial();
 
         for(Integer exponent : polynomial.getMonomialsMap().descendingKeySet()){

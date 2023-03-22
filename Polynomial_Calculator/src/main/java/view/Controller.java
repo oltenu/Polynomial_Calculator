@@ -9,7 +9,7 @@ public class Controller {
     private final Calculator calculator;
     private final View view;
 
-    public Controller(Calculator calculator, View view){
+    public Controller(Calculator calculator, View view) {
         this.calculator = calculator;
         this.view = view;
 
@@ -21,45 +21,63 @@ public class Controller {
         view.addIntegralButtonListener(new IntegralButtonListener());
     }
 
-    class AdditionButtonListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            view.setResult(calculator.callOperation(1, view.getFirstPolynomial(), view.getSecondPolynomial()));
-            view.setResultLabel("Addition");
+    class AdditionButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (calculator.callOperation(1, view.getFirstPolynomial(), view.getSecondPolynomial())) {
+                view.setResult(calculator.getResult());
+                view.setResultLabel("Addition");
+            } else
+                view.invalidInputDialog();
         }
     }
 
-    class SubtractionButtonListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            view.setResult(calculator.callOperation(2, view.getFirstPolynomial(), view.getSecondPolynomial()));
-            view.setResultLabel("Subtraction");
+    class SubtractionButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (calculator.callOperation(2, view.getFirstPolynomial(), view.getSecondPolynomial())) {
+                view.setResult(calculator.getResult());
+                view.setResultLabel("Subtraction");
+            } else
+                view.invalidInputDialog();
         }
     }
 
-    class MultiplicationButtonListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            view.setResult(calculator.callOperation(3, view.getFirstPolynomial(), view.getSecondPolynomial()));
-            view.setResultLabel("Multiplication");
+    class MultiplicationButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (calculator.callOperation(3, view.getFirstPolynomial(), view.getSecondPolynomial())) {
+                view.setResult(calculator.getResult());
+                view.setResultLabel("Multiplication");
+            } else
+                view.invalidInputDialog();
         }
     }
 
-    class DivisionButtonListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            view.setResult(calculator.callOperation(4, view.getFirstPolynomial(), view.getSecondPolynomial()));
-            view.setResultLabel("Division");
+    class DivisionButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (calculator.callOperation(4, view.getFirstPolynomial(), view.getSecondPolynomial())) {
+                view.setResult(calculator.getResult());
+                view.setResultLabel("Division");
+            } else
+                view.invalidInputDialog();
         }
     }
 
-    class DerivativeButtonListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            view.setResult(calculator.callOperation(5, view.getFirstPolynomial(), view.getSecondPolynomial()));
-            view.setResultLabel("Derivative");
+    class DerivativeButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (calculator.callOperation(5, view.getFirstPolynomial(), view.getSecondPolynomial())) {
+                view.setResult(calculator.getResult());
+                view.setResultLabel("Derivative");
+            } else
+                view.invalidInputDialog();
         }
     }
 
-    class IntegralButtonListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            view.setResult(calculator.callOperation(6, view.getFirstPolynomial(), view.getSecondPolynomial()));
-            view.setResultLabel("Integral");
+    class IntegralButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (calculator.callOperation(6, view.getFirstPolynomial(), view.getSecondPolynomial())) {
+                view.setResult(calculator.getResult());
+                view.setResultLabel("Integral");
+            } else
+                view.invalidInputDialog();
         }
     }
 }

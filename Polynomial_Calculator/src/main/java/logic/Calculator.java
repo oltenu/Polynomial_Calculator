@@ -3,40 +3,64 @@ package logic;
 import model.Polynomial;
 
 public class Calculator {
+    private final InputProcessor inputProcessor;
+    private final Operations operations;
+    private String result;
 
-    public String callOperation(int operationId, String firstUserInput, String secondUserInput){
+    public Calculator() {
+        inputProcessor = new InputProcessor();
+        operations = new Operations();
+    }
+
+    public boolean callOperation(int operationId, String firstUserInput, String secondUserInput) {
         Polynomial secondPolynomial;
         Polynomial firstPolynomial;
         switch (operationId) {
             case 1 -> {
-                firstPolynomial = new Polynomial(firstUserInput);
-                secondPolynomial = new Polynomial(secondUserInput);
-                return Operations.addition(firstPolynomial, secondPolynomial).toString();
+                if (inputProcessor.validateUserInput(firstUserInput) && inputProcessor.validateUserInput(secondUserInput)) {
+                    firstPolynomial = new Polynomial(inputProcessor.parseUserInput(firstUserInput));
+                    secondPolynomial = new Polynomial(inputProcessor.parseUserInput(secondUserInput));
+                    result = operations.addition(firstPolynomial, secondPolynomial).toString();
+                } else return false;
             }
             case 2 -> {
-                firstPolynomial = new Polynomial(firstUserInput);
-                secondPolynomial = new Polynomial(secondUserInput);
-                return Operations.subtraction(firstPolynomial, secondPolynomial).toString();
+                if (inputProcessor.validateUserInput(firstUserInput) && inputProcessor.validateUserInput(secondUserInput)) {
+                    firstPolynomial = new Polynomial(inputProcessor.parseUserInput(firstUserInput));
+                    secondPolynomial = new Polynomial(inputProcessor.parseUserInput(secondUserInput));
+                    result = operations.subtraction(firstPolynomial, secondPolynomial).toString();
+                } else return false;
             }
             case 3 -> {
-                firstPolynomial = new Polynomial(firstUserInput);
-                secondPolynomial = new Polynomial(secondUserInput);
-                return Operations.multiplication(firstPolynomial, secondPolynomial).toString();
+                if (inputProcessor.validateUserInput(firstUserInput) && inputProcessor.validateUserInput(secondUserInput)) {
+                    firstPolynomial = new Polynomial(inputProcessor.parseUserInput(firstUserInput));
+                    secondPolynomial = new Polynomial(inputProcessor.parseUserInput(secondUserInput));
+                    result = operations.multiplication(firstPolynomial, secondPolynomial).toString();
+                } else return false;
             }
             case 4 -> {
-                firstPolynomial = new Polynomial(firstUserInput);
-                secondPolynomial = new Polynomial(secondUserInput);
-                return Operations.division(firstPolynomial, secondPolynomial);
+                if (inputProcessor.validateUserInput(firstUserInput) && inputProcessor.validateUserInput(secondUserInput)) {
+                    firstPolynomial = new Polynomial(inputProcessor.parseUserInput(firstUserInput));
+                    secondPolynomial = new Polynomial(inputProcessor.parseUserInput(secondUserInput));
+                    result = operations.division(firstPolynomial, secondPolynomial);
+                } else return false;
             }
             case 5 -> {
-                firstPolynomial = new Polynomial(firstUserInput);
-                return Operations.derivative(firstPolynomial).toString();
+                if (inputProcessor.validateUserInput(firstUserInput) && inputProcessor.validateUserInput(secondUserInput)) {
+                    firstPolynomial = new Polynomial(inputProcessor.parseUserInput(firstUserInput));
+                    result = operations.derivative(firstPolynomial).toString();
+                } else return false;
             }
             case 6 -> {
-                firstPolynomial = new Polynomial(firstUserInput);
-                return Operations.integral(firstPolynomial).toString();
+                if (inputProcessor.validateUserInput(firstUserInput) && inputProcessor.validateUserInput(secondUserInput)) {
+                    firstPolynomial = new Polynomial(inputProcessor.parseUserInput(firstUserInput));
+                    result = operations.integral(firstPolynomial).toString();
+                } else return false;
             }
         }
-        return null;
+        return true;
+    }
+
+    public String getResult() {
+        return result;
     }
 }
