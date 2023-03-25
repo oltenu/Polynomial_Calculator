@@ -1,10 +1,7 @@
 package logic;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.TreeMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.*;
+import java.util.regex.*;
 
 public class InputProcessor {
     public boolean validateUserInput(String userInput) {

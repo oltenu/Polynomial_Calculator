@@ -1,7 +1,6 @@
 package logic;
 
 import model.Polynomial;
-
 import java.util.Map;
 
 public class Operations {
@@ -44,6 +43,10 @@ public class Operations {
 
     public Polynomial multiplication(Polynomial firstPolynomial, Polynomial secondPolynomial) {
         Polynomial returnValue = new Polynomial();
+        Polynomial zeroTest = new Polynomial();
+        zeroTest.insertMonomial(0, 0);
+        if(firstPolynomial.equals(zeroTest) || secondPolynomial.equals(zeroTest))
+            return zeroTest;
 
         for (Integer firstExponent : firstPolynomial.getMonomialsMap().keySet())
             for (Integer secondExponent : secondPolynomial.getMonomialsMap().keySet()) {
@@ -67,8 +70,8 @@ public class Operations {
             divisor = secondPolynomial;
             dividend = firstPolynomial;
         } else {
+            divisor = firstPolynomial;
             dividend = secondPolynomial;
-            divisor = secondPolynomial;
         }
 
         remainder.insertMonomial(0, 0);

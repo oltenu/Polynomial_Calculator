@@ -1,14 +1,10 @@
 package model;
 
-import logic.utility.DoubleFormat;
-
-import java.util.Objects;
-import java.util.TreeMap;
-
+import java.util.*;
 import static logic.utility.DoubleFormat.*;
 
 public class Polynomial {
-    private TreeMap<Integer, Double> monomialsMap;
+    private final TreeMap<Integer, Double> monomialsMap;
 
     public Polynomial(TreeMap<Integer, Double> monomialsMap) {
         this.monomialsMap = monomialsMap;
@@ -42,7 +38,7 @@ public class Polynomial {
 
     @Override
     public String toString() {
-        if(monomialsMap.size() == 1 && monomialsMap.containsValue(0d))
+        if((monomialsMap.size() == 1 && monomialsMap.containsValue(0d)) || monomialsMap.isEmpty())
             return "0";
         StringBuilder returnValue = new StringBuilder();
         for (Integer exponent : monomialsMap.descendingKeySet()) {

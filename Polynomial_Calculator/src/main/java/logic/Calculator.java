@@ -39,8 +39,12 @@ public class Calculator {
             }
             case 4 -> {
                 if (inputProcessor.validateUserInput(firstUserInput) && inputProcessor.validateUserInput(secondUserInput)) {
+                    Polynomial zeroTest = new Polynomial();
+                    zeroTest.insertMonomial(0, 0);
                     firstPolynomial = new Polynomial(inputProcessor.parseUserInput(firstUserInput));
                     secondPolynomial = new Polynomial(inputProcessor.parseUserInput(secondUserInput));
+                    if(firstPolynomial.equals(zeroTest) || secondPolynomial.equals(zeroTest))
+                        return false;
                     result = operations.division(firstPolynomial, secondPolynomial);
                 } else return false;
             }

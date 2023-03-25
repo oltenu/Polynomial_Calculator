@@ -24,7 +24,7 @@ public class View extends JFrame {
     private JButton derivativeButton;
     private JButton integralButton;
 
-    public View(){
+    public View() {
         ImageIcon applicationIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/calculator.png")));
         setIconImage(applicationIcon.getImage());
         setSize(350, 500);
@@ -50,7 +50,7 @@ public class View extends JFrame {
     }
 
     //Creating main panels
-    public void createHeaderPanel(){
+    public void createHeaderPanel() {
         headerPanel = new JPanel();
         headerPanel.setBackground(Color.LIGHT_GRAY);
         headerPanel.setLayout(new GridLayout(2, 1, 10, 10));
@@ -65,7 +65,7 @@ public class View extends JFrame {
         headerPanel.add(fillingPanel);
     }
 
-    public void createInputPanel(){
+    public void createInputPanel() {
         inputPanel = new JPanel();
         inputPanel.setBackground(Color.LIGHT_GRAY);
         inputPanel.setLayout(new GridLayout(2, 2, 5, 5));
@@ -86,7 +86,7 @@ public class View extends JFrame {
         inputPanel.add(secondPolynomialTextField);
     }
 
-    public void createOperationsPanel(){
+    public void createOperationsPanel() {
         operationsPanel = new JPanel();
         operationsPanel.setBackground(Color.LIGHT_GRAY);
         operationsPanel.setLayout(new GridLayout(3, 2, 10, 10));
@@ -119,10 +119,10 @@ public class View extends JFrame {
 
     }
 
-    public void createResultPanel(){
+    public void createResultPanel() {
         resultPanel = new JPanel();
         resultPanel.setBackground(Color.LIGHT_GRAY);
-        resultPanel.setLayout( new GridLayout(2, 1, 10, 10));
+        resultPanel.setLayout(new GridLayout(2, 1, 10, 10));
 
 
         resultLabel = new JLabel("Awaiting operation...", SwingConstants.CENTER);
@@ -138,48 +138,48 @@ public class View extends JFrame {
     }
 
     //Util methods
-    public String getFirstPolynomial(){
+    public String getFirstPolynomial() {
         return firstPolynomialTextField.getText();
     }
 
-    public String getSecondPolynomial(){
+    public String getSecondPolynomial() {
         return secondPolynomialTextField.getText();
     }
 
-    public void setResult(String result){
+    public void setResult(String result) {
         resultTextField.setText(result);
     }
 
-    public void setResultLabel(String operation){
+    public void setResultLabel(String operation) {
         resultLabel.setText("Result of " + operation);
     }
 
-    public void invalidInputDialog(){
+    public void invalidInputDialog() {
         JOptionPane.showMessageDialog(new JButton("OK!"), "Invalid Input!");
     }
 
     //Listeners
-    public void addAdditionButtonListener(ActionListener addition){
+    public void addAdditionButtonListener(ActionListener addition) {
         additionButton.addActionListener(addition);
     }
 
-    public void addSubtractionButtonListener(ActionListener subtraction){
+    public void addSubtractionButtonListener(ActionListener subtraction) {
         subtractionButton.addActionListener(subtraction);
     }
 
-    public void addMultiplicationButtonListener(ActionListener multiplication){
+    public void addMultiplicationButtonListener(ActionListener multiplication) {
         multiplicationButton.addActionListener(multiplication);
     }
 
-    public void addDivisionButtonListener(ActionListener division){
+    public void addDivisionButtonListener(ActionListener division) {
         divisionButton.addActionListener(division);
     }
 
-    public void addDerivativeButtonListener(ActionListener derivation){
+    public void addDerivativeButtonListener(ActionListener derivation) {
         derivativeButton.addActionListener(derivation);
     }
 
-    public void addIntegralButtonListener(ActionListener integral){
+    public void addIntegralButtonListener(ActionListener integral) {
         integralButton.addActionListener(integral);
     }
 }
