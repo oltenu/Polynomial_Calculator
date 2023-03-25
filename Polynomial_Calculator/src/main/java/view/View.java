@@ -155,7 +155,7 @@ public class View extends JFrame {
     }
 
     public void invalidInputDialog(){
-        JOptionPane.showInputDialog(new JButton("OK!"), "Invalid Input!");
+        JOptionPane.showMessageDialog(new JButton("OK!"), "Invalid Input!");
     }
 
     //Listeners

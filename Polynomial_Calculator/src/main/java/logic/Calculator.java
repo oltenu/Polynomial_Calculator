@@ -45,13 +45,13 @@ public class Calculator {
                 } else return false;
             }
             case 5 -> {
-                if (inputProcessor.validateUserInput(firstUserInput) && inputProcessor.validateUserInput(secondUserInput)) {
+                if (inputProcessor.validateUserInput(firstUserInput)) {
                     firstPolynomial = new Polynomial(inputProcessor.parseUserInput(firstUserInput));
                     result = operations.derivative(firstPolynomial).toString();
                 } else return false;
             }
             case 6 -> {
-                if (inputProcessor.validateUserInput(firstUserInput) && inputProcessor.validateUserInput(secondUserInput)) {
+                if (inputProcessor.validateUserInput(firstUserInput)) {
                     firstPolynomial = new Polynomial(inputProcessor.parseUserInput(firstUserInput));
                     result = operations.integral(firstPolynomial).toString();
                 } else return false;

@@ -1,12 +1,17 @@
 package logic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InputProcessor {
     public boolean validateUserInput(String userInput) {
-        Pattern pattern = Pattern.compile("([+-]?([0-9]+)?(x(\\^[0-9]+)?)?)+");
+        if(userInput.isBlank())
+            return false;
+        userInput = userInput.trim();
+        Pattern pattern = Pattern.compile("(([+-])?([0-9]+)?(x)?(\\^[0-9]+)?)+");
         Matcher matcher = pattern.matcher(userInput);
 
         return matcher.matches();
@@ -14,21 +19,16 @@ public class InputProcessor {
 
     public TreeMap<Integer, Double> parseUserInput(String userInput) {
         TreeMap<Integer, Double> monomialsMap = new TreeMap<>();
+        userInput = userInput.trim();
 
         if (Character.isDigit(userInput.charAt(0)) || userInput.startsWith("x"))
             userInput = "+" + userInput;
 
-        String[] preliminaryMonomials = userInput.split("[+-]");
-        String[] signs = userInput.split("([0-9]+)?x(\\^[0-9]+)?");
-        String[] monomials = new String[preliminaryMonomials.length - 1];
-
-        int signsCounter = 0;
-        int monomialsCounter = 0;
-        for (String element : preliminaryMonomials) {
-            if (!element.equals("")) {
-                monomials[monomialsCounter++] = signs[signsCounter++].charAt(0) + element;
-            }
-        }
+        Pattern pattern = Pattern.compile("(([+-])?([0-9]+)?(x)?(\\^[0-9]+)?)");
+        Matcher matcher = pattern.matcher(userInput);
+        List<String> monomials = new ArrayList<>();
+        while(matcher.find())
+            monomials.add(matcher.group());
 
         for (String element : monomials) {
             if (element.contains("x^")) {
@@ -44,7 +44,7 @@ public class InputProcessor {
                 }
             } else if (element.contains("x")) {
                 String coefficientString;
-                if(!element.matches("[0-9]"))
+                if(!Character.isDigit(element.charAt(1)))
                     coefficientString = element.replace("x", "1");
                 else
                     coefficientString  = element.replace("x", "");
@@ -53,7 +53,7 @@ public class InputProcessor {
                 } else {
                     monomialsMap.put(1, Double.parseDouble(coefficientString));
                 }
-            } else {
+            } else if(!element.isEmpty()){
                 if (monomialsMap.containsKey(0)) {
                     monomialsMap.put(0, monomialsMap.get(0) + Double.parseDouble(element));
                 } else {
