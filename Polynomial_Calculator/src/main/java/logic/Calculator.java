@@ -58,6 +58,7 @@ public class Calculator {
                 if (inputProcessor.validateUserInput(firstUserInput)) {
                     firstPolynomial = new Polynomial(inputProcessor.parseUserInput(firstUserInput));
                     result = operations.integral(firstPolynomial).toString();
+                    result = result + "+C";
                 } else return false;
             }
         }
